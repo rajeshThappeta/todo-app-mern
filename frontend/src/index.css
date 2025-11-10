@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: white;
+}
+.heading {
+  color: #adb5bd;
+}
+
+.heading-fixed {
+  color: #adb5bd;
+
+}
+
+.register-wrapper {
+  /* background-color:#ff69b4 ;  */
+  border-radius: 10px;
+  background-color: #82c8e5;
+}
+
+.user-register-btn {
+  background-color: #ff69b4;
+  color: #f8f9fa;
+  display: block;
+  margin: auto;
+  box-shadow: 3px 4px 2px #e2e4e5;
+}
+input::placeholder {
+  color: #dee2e6 !important;
+}
+
+.small-text {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.task-desc {
+  font-size: 0.8rem;
+}
+.task-obj-parent {
+  position: relative;
+}
+.timestamps {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 3px;
+  font-size: 0.7rem;
+}
+.mark-as-completed-btn {
+  font-size: 0.7rem;
+  padding: 1px 1.5px;
+  color: white;
+}
+
+.tasks-container {
+  max-height: 500px; /* or any height you want */
+  overflow-y: auto; /* enables vertical scroll */
+  padding-right: 10px; /* optional for scrollbar space */
+}
+
+/* Optional: style scrollbar */
+.tasks-container::-webkit-scrollbar {
+  width: 8px;
+}
+.tasks-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+.tasks-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
