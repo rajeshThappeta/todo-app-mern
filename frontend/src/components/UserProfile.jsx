@@ -5,10 +5,10 @@ import TasksList from './TasksList'
 function UserProfile() {
   return (
     <div className='row'>
-      <div className="col-sm-6  border-end border-3">
+      <div className="col-sm-4  border-end border-3">
         <CreateTask />
       </div>
-      <div className="col-sm-6 tasks-scroll">
+      <div className="col-sm-8 tasks-scroll">
         <TasksList />
       </div>
     </div>

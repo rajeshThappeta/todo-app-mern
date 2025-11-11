@@ -6,6 +6,7 @@ import UserProfile from "./components/UserProfile";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,14 +29,18 @@ function App() {
         },
         {
           path: "profile",
-          element: <UserProfile />,
+          element: (
+            <ProtectedRoute>
+              <UserProfile />
+            </ProtectedRoute>
+          ),
         },
       ],
     },
   ]);
   return (
     <>
-      <ToastContainer position="bottom-right" autoClose={2000}  />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <RouterProvider router={router} />
     </>
   );
