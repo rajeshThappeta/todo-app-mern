@@ -86,8 +86,7 @@ userRouter.put("/edit-todo", async (req, res) => {
   let updatedTodo = req.body;
 
   let { userId, taskId } = req.query;
-  console.log(userId, taskId);
-  console.log(updatedTodo);
+
 
  // const { _id, ...rest } = updatedTodo; // remove _id
   let userObj = await UserModel.findOneAndUpdate(

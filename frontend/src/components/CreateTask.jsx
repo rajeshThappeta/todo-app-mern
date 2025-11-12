@@ -9,7 +9,7 @@ function CreateTask() {
     formState: { errors },
   } = useForm();
   let { currentUser, loginStatus, setCurrentUser } = useContext(authContext);
-  console.log("crnt user in create task", currentUser);
+
 
   const createTask = async (newTask) => {
     if (loginStatus === true) {
@@ -20,7 +20,7 @@ function CreateTask() {
         credentials:"include"
       });
 
-      console.log("res after task added:", res);
+     
       if (res.status === 200) {
         let resBody = await res.json();
         setCurrentUser(resBody.payload);

@@ -23,7 +23,6 @@ function Login() {
     }
   }, [loginStatus]);
 
-  console.log(loginStatus);
   return (
     <>
       <h1 className="fs-3 text-center my-4 heading">User SignIn</h1>

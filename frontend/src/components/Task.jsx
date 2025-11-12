@@ -5,6 +5,7 @@ import { authContext } from "../contexts/AuthContext";
 import { Modal } from "react-bootstrap";
 import { CiEdit } from "react-icons/ci";
 import { IoSaveOutline } from "react-icons/io5";
+import { MdOutlineEditOff } from "react-icons/md";
 import { useForm } from "react-hook-form";
 
 function Task({ taskObj }) {
@@ -71,18 +72,17 @@ function Task({ taskObj }) {
   const onEditTask = () => {};
 
   const onSavetask = async (modifiedTaskObj) => {
-    // setTaskBeingEdited({ ...taskBeingEdited, modifiedTaskObj });
-    setTaskBeingEdited((prev) => ({
-      ...prev,
-      ...modifiedTaskObj,
-    }));
-
+    //get updatedTaskObj by adding Object ID
+    const updatedTaskObj = { ...taskBeingEdited, ...modifiedTaskObj };
+    //udpate state
+    setTaskBeingEdited(updatedTaskObj);
+    //make API req
     let res = await fetch(
       `http://localhost:8080/user-api/edit-todo?userId=${currentUser._id}&taskId=${taskBeingEdited._id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...taskBeingEdited, ...modifiedTaskObj }),
+        body: JSON.stringify(updatedTaskObj),
         credentials: "include",
       }
     );
@@ -92,8 +92,6 @@ function Task({ taskObj }) {
       setCurrentUser(resBody.payload);
     }
   };
-
-  console.log(taskBeingEdited);
 
   return (
     <div className="bg-light m-3 p-3 task-obj-parent">
@@ -105,7 +103,11 @@ function Task({ taskObj }) {
         <p className="lead mb-2 text-capitalize ">
           <span className="bg-secondary text-light rounded px-1 task-name">{taskObj.taskName}</span>
           <span className="ms-2 text-danger fs-4">
-            <CiEdit onClick={() => openModal(taskObj)} />
+            {taskObj.status === "pending" ? (
+              <CiEdit onClick={() => openModal(taskObj)} />
+            ) : (
+             <MdOutlineEditOff />
+            )}
           </span>
         </p>
         <p className="small-text mb-2">
