@@ -72,7 +72,7 @@ userRouter.get("/test", verifyToken, (req, res) => {
 //add to-do
 userRouter.post("/todo/:userId", async (req, res) => {
   let newTodo = req.body;
-  console.log("new todo ",newTodo)
+  console.log("new todo ", newTodo);
   let userObj = await UserModel.findByIdAndUpdate(
     req.params.userId,
     { $addToSet: { todos: newTodo } },
@@ -81,7 +81,30 @@ userRouter.post("/todo/:userId", async (req, res) => {
   res.json({ success: true, payload: userObj });
 });
 
-//update to-do
+//update task
+userRouter.put("/edit-todo", async (req, res) => {
+  let updatedTodo = req.body;
+
+  let { userId, taskId } = req.query;
+  console.log(userId, taskId);
+  console.log(updatedTodo);
+
+ // const { _id, ...rest } = updatedTodo; // remove _id
+  let userObj = await UserModel.findOneAndUpdate(
+    { _id: userId, "todos._id": taskId },
+    {
+      $set: {
+        "todos.$.taskName": updatedTodo.taskName,
+        "todos.$.description": updatedTodo.description,
+      },
+    },
+    { new: true }
+  );
+
+  res.json({ success: true, payload: userObj });
+});
+
+//update to-do by change status to completed
 userRouter.put("/todo", async (req, res) => {
   let updatedTodo = req.body;
 
@@ -89,7 +112,13 @@ userRouter.put("/todo", async (req, res) => {
 
   let userObj = await UserModel.findOneAndUpdate(
     { _id: userId, "todos._id": taskId },
-    { $set: { "todos.$.taskName": updatedTodo.taskName,"todos.$.description": updatedTodo.description ,"todos.$.status": updatedTodo.status } },
+    {
+      $set: {
+        "todos.$.taskName": updatedTodo.taskName,
+        "todos.$.description": updatedTodo.description,
+        "todos.$.status": updatedTodo.status,
+      },
+    },
     { new: true }
   );
 
@@ -101,8 +130,8 @@ userRouter.put("/delete-todo", async (req, res) => {
   let { userId, taskId } = req.query;
 
   let userObj = await UserModel.findOneAndUpdate(
-    { _id: userId},
-    { $pull: { todos: {_id:taskId} } },
+    { _id: userId },
+    { $pull: { todos: { _id: taskId } } },
     { new: true }
   );
 

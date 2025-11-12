@@ -26,7 +26,7 @@ function Header() {
               to="login"
               className="nav-link"
               style={({ isActive }) => ({
-                color: isActive ? "#069494" : "#adb5bd",
+                color: isActive ? "#ff69b4" : "#adb5bd",
               })}
             >
               Login
@@ -37,7 +37,7 @@ function Header() {
               to="register"
               className="nav-link"
               style={({ isActive }) => ({
-                color: isActive ? "#069494" : "#adb5bd",
+                color: isActive ? "#ff69b4" : "#adb5bd",
               })}
             >
               Register
@@ -50,7 +50,7 @@ function Header() {
             to="login"
             className="nav-link"
             style={({ isActive }) => ({
-              color: isActive ? "#069494" : "#adb5bd",
+              color: isActive ? "#ff69b4" : "#adb5bd",
             })}
             onClick={onUserLogout}
           >
