@@ -101,12 +101,12 @@ function Task({ taskObj }) {
       ></button>
       <div className="task-header">
         <p className="lead mb-2 text-capitalize ">
-          <span className="bg-secondary text-light rounded px-1 task-name">{taskObj.taskName}</span>
-          <span className="ms-2 text-danger fs-4">
+          <span className=" rounded task-name">{taskObj.taskName}</span>
+          <span className="ms-2 editon-btn fs-3">
             {taskObj.status === "pending" ? (
               <CiEdit onClick={() => openModal(taskObj)} />
             ) : (
-             <MdOutlineEditOff />
+             <MdOutlineEditOff className="editoff-btn" />
             )}
           </span>
         </p>
@@ -124,7 +124,7 @@ function Task({ taskObj }) {
       {taskObj.status !== "completed" && (
         <button
           disabled={btnStatus}
-          className="btn btn-sm btn-info mark-as-completed-btn"
+          className="btn btn-sm btn-outline-success mark-as-completed-btn"
           onClick={() => setTaskCompletion(taskObj)}
         >
           Mark as completed

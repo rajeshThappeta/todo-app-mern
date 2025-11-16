@@ -21,7 +21,7 @@ function Register() {
       body: JSON.stringify(newUser),
     });
 
-    console.log(res);
+   // console.log(res);
     if (res.status === 201) {
       setRegisterErr("")
       toast.success("Registration successful! Please login.");

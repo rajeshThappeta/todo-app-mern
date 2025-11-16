@@ -15,10 +15,22 @@ body {
 }
 .task-name {
   font-size: clamp(0.9rem, 2vw, 1.5rem);
+  background-color: darkolivegreen;
+  color: rgb(190, 215, 145);
+  padding: 1px 10px;
 }
 
 .heading-fixed {
   color: #adb5bd;
+}
+
+.editoff-btn{
+  color: #888;
+}
+
+.editon-btn{
+  color: rgb(222, 161, 5);
+  font-size: 3.5px;
 }
 
 .register-wrapper {
@@ -41,11 +53,13 @@ input::placeholder {
 .small-text {
   font-size: 0.8rem;
   margin: 0;
-  font-family: cursive ;
+  font-family:  sans-serif ;
+  
 }
 
 .task-desc {
   font-size: 0.8rem;
+ 
 }
 .task-obj-parent {
   position: relative;
@@ -58,8 +72,9 @@ input::placeholder {
 }
 
 .btn-close{
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   margin-bottom: 10px;
+  
 }
 
 .form-validation-err{
@@ -68,7 +83,7 @@ input::placeholder {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .username{
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-right: 10px;
   padding: 2px 4px;
   border-radius: 2px;
@@ -83,16 +98,18 @@ input::placeholder {
   left: 5px;
   bottom: 5px;
   padding: 3px;
-  font-size: 0.7rem;
-  color: rgb(180, 178, 178);
+  font-size: 0.8rem;
+  color: rgb(6, 147, 172);
 }
 .mark-as-completed-btn {
-  font-size: 0.7rem;
-  padding: 1px 1.5px;
+  font-size: 0.9rem;
+  padding: 1px 6px;
   color: white;
   position: absolute;
   bottom: 5px;
   right: 5px;
+  color: green;
+  /* background-color: #029335bb; */
 }
 
 .tasks-container {

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 export const authContext = createContext();
 
 function AuthContext({ children }) {
@@ -19,6 +20,7 @@ function AuthContext({ children }) {
         credentials: "include",
       }
     );
+    console.log("res in authcontext:", res);
     if (res.status === 200) {
       let resBody = await res.json();
       console.log(resBody);
@@ -31,6 +33,11 @@ function AuthContext({ children }) {
         setLoginStatus(false);
         setLoginError(resBody.message);
       }
+    } else {
+      const errorData = await res.json();
+      console.log("error data", errorData);
+      toast.error(errorData.message || "Login failed");
+      setLoginError(errorData.message)
     }
   };
 
@@ -55,7 +62,7 @@ function AuthContext({ children }) {
         }
       })
       .then((user) => {
-        console.log("user :", user);
+       // console.log("user :", user);
         if (user.payload) {
           setCurrentUser(user.payload);
           setLoginStatus(true);
@@ -69,9 +76,7 @@ function AuthContext({ children }) {
       });
   }, []);
   return (
-    <authContext.Provider
-      value={{ currentUser, setCurrentUser, userLogin, userLogout, loginStatus, loginError }}
-    >
+    <authContext.Provider value={{ currentUser, setCurrentUser, userLogin, userLogout, loginStatus, loginError }}>
       {children}
     </authContext.Provider>
   );

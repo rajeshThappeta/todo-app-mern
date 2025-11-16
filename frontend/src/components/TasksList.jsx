@@ -9,7 +9,7 @@ function TasksList() {
     <div className="tasks-container ">
       <h1 className="fs-3 text-center my-4 mb-3 heading heading-fixed ">List of Tasks</h1>
       {currentUser !== null && currentUser?.todos?.length !== 0 ? (
-        currentUser.todos.map((taskObj) => <Task taskObj={taskObj} />)
+        currentUser.todos.map((taskObj) => <Task taskObj={taskObj} key={taskObj._id}/>)
       ) : (
         <div className="text-center">
           <img
